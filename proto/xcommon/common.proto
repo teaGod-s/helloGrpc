@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package xcommon;
+
+option go_package="gomod.pri/helloGrpc/pb/xcommon";
+
+// CommonIn 通用请求包字段
+message CommonIn {
+    // 追踪Id
+    string TrackId = 1;
+    // 客户端Id
+    string ClientId = 2;
+    // 语言
+    string Lang = 5;
+    // 令牌, 需要登录的接口必传
+    string Token = 3;
+    // 用户Id, 可选字段, 客户端请求不传
+    int64 UserId = 4;
+}
+
+// CommonOut 通用回包字段
+message CommonOut {
+    // 状态码
+    int32 Code = 1;
+    // 错误信息
+    string ErrMsg = 2;
+}
+
+enum Bool {
+    BOOL_UNSPECIFIED = 0;
+    BOOL_YES = 1;
+    BOOL_NO = 2;
+}

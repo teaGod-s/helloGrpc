@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "xcommon/enum.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+package hello;
+
+option go_package="pb/internal/hello";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "hello服务的api文档";
+    version: "1.0";
+    description: "描述待会再写";
+  };
+};
+
+message Hello {
+  string name = 1;
+  int32 age = 2;
+}
+
+message SayHelloRequest {
+  Hello msg = 1;
+}
+
+message SayHelloResponse {
+  xcommon.Status status = 1;
+}
+
+// AuthService hello服务
+service HelloService {
+  // 打招呼
+  rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {}
+}

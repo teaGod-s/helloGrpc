@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package xcommon;
+
+option go_package="gomod.pri/helloGrpc/pb/xcommon";
+
+// 选择框是否为选择状态的枚举定义
+enum Mark {
+    MARK_UNSPECIFIED = 0;
+    MARK_ON = 1; // 是选择状态
+    MARK_OFF = 2; // 不是选择状态
+}
+
+enum Status {
+    STATUS_UNSPECIFIED = 0;
+    // 正常
+    STATUS_NORMAL = 1;
+    // 非正常
+    STATUS_ABNORMAL = 2;
+}

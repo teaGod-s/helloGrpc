@@ -1,0 +1,31 @@
+version: v2
+#managed:
+#  enabled: true
+#  override:
+#    - file_option: go_package_prefix
+#      value: gomod.pri/helloGrpc/pb
+plugins:
+  - remote: buf.build/grpc-ecosystem/gateway:v2.25.1
+    out: pb
+    opt:
+      - paths=source_relative
+      - generate_unbound_methods=true
+  # dependencies
+  - remote: buf.build/protocolbuffers/go:v1.36.1
+    out: pb
+    opt:
+      - paths=source_relative
+  - remote: buf.build/grpc/go:v1.5.1
+    out: pb
+    opt:
+      - paths=source_relative
+  - remote: buf.build/grpc-ecosystem/openapiv2:v2.25.1
+    out: docs
+    opt:
+      - logtostderr=true
+      - generate_unbound_methods=true
+      - allow_merge=true
+      - merge_file_name=all_in_one
+      - enums_as_ints=true
+inputs:
+  - directory: proto

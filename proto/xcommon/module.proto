@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package xcommon;
+
+option go_package="gomod.pri/helloGrpc/pb/xcommon";
+
+import "xcommon/enum.proto";
+import "xcommon/common.proto";
+
+// MarkMeta is a meta message with an addition mark field
+message MarkMeta {
+    int64 Id = 1;
+    string Name = 2;
+    Mark Mark = 3;
+}

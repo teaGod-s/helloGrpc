@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package authipb;
+
+option go_package="pb/internal/authipb";
+
+import "xcommon/common.proto";
+import "xcommon/enum.proto";
+import "xcommon/module.proto";
+
+// AuthService 内部授权服务
+service AuthService {
+    // ListUserGroupByRoleID 根据角色ID获取他所关联的的用户组的列表
+    rpc ListUserGroupByRoleID (ListUserGroupByRoleIDReq) returns (ListUserGroupByRoleIDResp) {}
+}
+
+// ListUserGroupByRoleIDReq 列出一个角色下面所有的用户组列表请求包
+message ListUserGroupByRoleIDReq {
+    xcommon.CommonIn CommonIn = 1;
+    // 角色ID
+    int64 RoleId = 2;
+}
+
+// ListUserGroupByRoleIDResp 列出一个角色下面所有的用户组列表回包
+message ListUserGroupByRoleIDResp {
+    xcommon.CommonOut CommonOut = 1;
+    repeated xcommon.MarkMeta UserGroupInfos = 2;
+}
