@@ -8,6 +8,7 @@
 buf --version
 buf config init
 buf build
+buf dep update
 buf generate
 buf lint
 buf breaking --against ".git#subdir=./proto"

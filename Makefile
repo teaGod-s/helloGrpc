@@ -11,7 +11,7 @@ break:
 .PHONY: gen
 # pb生成 swagger生成
 gen:
-	buf build && buf generate && cd docs && go generate && go fmt
+	buf dep update && buf build && buf generate && cd docs && go generate && go fmt
 
 .PHONY: build
 # 构建二进制
